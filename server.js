@@ -5,16 +5,11 @@
 // but feel free to use whatever libraries or frameworks you'd like through `package.json`.
 const express = require("express");
 const app = express();
-
+app.set("view engine", "pug");
+app.set("views", "./views");
 // https://expressjs.com/en/starter/basic-routing.html
-app.get("/", (request, response) => {
-  response.send("I love CodersX");
-});
-
-app.get("/todos", (request, response) => {
-  response.send(
-    "<ul><li>Đi Chợ</li><li>Nâu Cơm</li><li>Rửa Bát</li><li>Học Tại CoderX</li></ul>"
-  );
+app.get("/", (req, res) => {
+  res.render("todos", { todos: ["Đi Chợ", "Nấu Cơm", "Rửa Bát" , "Học Tại CoderX"] });
 });
 
 // listen for requests :)
